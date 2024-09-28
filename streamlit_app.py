@@ -28,21 +28,6 @@ if gemini_api_key:
         model = genai.GenerativeModel("gemini-pro") 
         st.success("Gemini API Key successfully configured.") 
         
-        # Greet the user only once after successful API key input
-        if "greeting_displayed" not in st.session_state or not st.session_state.greeting_displayed:
-            greeting_message = """
-            Welcome to the Coffee Connoisseur Chatbot! ☕ I'm here to help you discover amazing coffee experiences.
-            Whether you're curious about coffee beans, brewing techniques, or finding the best cafes in Thailand, just ask!
-            How can I assist you in your coffee journey today?
-            """
-        
-            # Append the greeting only once
-            st.session_state.chat_history.append(("assistant", greeting_message))
-            st.chat_message("assistant", avatar="☕").markdown(greeting_message)
-
-            # Set the flag to prevent showing the greeting again
-            st.session_state.greeting_displayed = True
-
     except Exception as e: 
         st.error(f"An error occurred while setting up the Gemini model: {e}") 
 
